@@ -8,10 +8,20 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 
+// Providers
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { AuthContextProvider } from './context/Auth.provider';
+
+const queryClient = new QueryClient();
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <QueryClientProvider client={queryClient}>
+      <AuthContextProvider>
+        <App />
+      </AuthContextProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
