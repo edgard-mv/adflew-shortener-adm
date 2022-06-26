@@ -9,7 +9,7 @@ const AppForm = ({ children }) => {
         display: 'flex',
       }}
     >
-      <Container maxWidth="md">
+      <Container maxWidth="lg">
         <Box sx={{ height: 1, display: 'flex', alignItems: 'center' }}>
           <Paper
             elevation={2}

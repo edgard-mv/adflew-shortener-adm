@@ -5,8 +5,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { styled } from '@mui/material/styles';
-
+import MainContainer from '../components/MainContainer.jsx';
 import AppForm from '../components/AppForm.jsx';
 
 const Login = () => {
@@ -29,7 +28,7 @@ const Login = () => {
   }
 
   return (
-    <Container>
+    <MainContainer>
       <AppForm>
         <Typography variant="h5" alignContent="center">
           Log in
@@ -42,7 +41,6 @@ const Login = () => {
             flexDirection: 'column',
             rowGap: '20px',
           }}
-          noValidate
           onSubmit={onSubmit}
           autoComplete="off"
         >
@@ -60,21 +58,13 @@ const Login = () => {
             type="password"
             helperText="It must contain at least 6 characters"
           />
-          <Button type="submit" sx={{ mt: 3, width: 1 }}>
+          <Button type="submit" sx={{ mt: 3, width: 1 }} variant="contained">
             Log in
           </Button>
         </Box>
       </AppForm>
-    </Container>
+    </MainContainer>
   );
 };
-
-const Container = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignContent: 'center',
-  justifyContent: 'center',
-  width: '100%',
-  minHeight: '100vh',
-}));
 
 export default Login;
