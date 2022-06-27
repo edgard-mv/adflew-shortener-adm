@@ -2,7 +2,7 @@
 
 `adflew-shortener-adm` contains an example of a React project that serves as the front-end for a url shortener restful api.
 
-You can now try it here: `https://tranquil-lake-54582.herokuapp.com/` using `'admin'` adn `'password'` as credentials (without the single quotes).
+You can now try it on heroku: [Adflew](https://tranquil-lake-54582.herokuapp.com/) using `'admin'` and `'password'` as credentials (without the single quotes).
 
 This application uses:
 
