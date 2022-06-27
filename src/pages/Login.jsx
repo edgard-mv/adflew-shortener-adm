@@ -56,7 +56,6 @@ const Login = () => {
             required
             label="Password"
             type="password"
-            helperText="It must contain at least 6 characters"
           />
           <Button type="submit" sx={{ mt: 3, width: 1 }} variant="contained">
             Log in
