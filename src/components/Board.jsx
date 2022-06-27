@@ -38,10 +38,7 @@ const getFullUrl = (shortCode) => BASE_URL.concat(`/${shortCode}`);
 const Board = () => {
   const queryClient = useQueryClient();
 
-  const { data: boardEntries, isSuccess } = useQuery(
-    [BOARD_ENTRIES],
-    getBoardInfo
-  );
+  const { data: boardEntries } = useQuery([BOARD_ENTRIES], getBoardInfo);
 
   function onClickLink(e) {
     queryClient.invalidateQueries(BOARD_ENTRIES);
