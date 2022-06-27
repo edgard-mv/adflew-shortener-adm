@@ -1,9 +1,11 @@
 import { Button, Link, TextField, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
-import { useMutation } from 'react-query';
+import { useMutation, useQueryClient } from 'react-query';
 import shortenUrlMutation from '../api/mutations/shortenUrl.mutation';
+import { BOARD_ENTRIES } from '../api/queries/queryKeys';
 import AppForm from '../components/AppForm';
+import Board from '../components/Board';
 import { BASE_URL } from '../utils/constants';
 
 const Home = () => {
@@ -34,10 +36,19 @@ const Home = () => {
     navigator.clipboard.writeText(fullUrl);
   }
 
+  const queryClient = useQueryClient();
+
+  function onClickLink(e) {
+    queryClient.invalidateQueries(BOARD_ENTRIES);
+  }
+
   return (
     <Box
       sx={{
         display: 'flex',
+        flexWrap: 'wrap',
+        rowGap: '10px',
+        p: 2,
         width: 1,
         height: '100%',
         justifyContent: 'center',
@@ -87,7 +98,13 @@ const Home = () => {
               borderRadius: 1,
             })}
           >
-            <Link href={fullUrl} variant="body2" target="_blank" rel="noopener">
+            <Link
+              href={fullUrl}
+              onClick={onClickLink}
+              variant="body2"
+              target="_blank"
+              rel="noopener"
+            >
               {fullUrl}
             </Link>
             <Button
@@ -101,6 +118,7 @@ const Home = () => {
           </Box>
         )}
       </AppForm>
+      <Board />
     </Box>
   );
 };
