@@ -16,7 +16,11 @@ export const fetchAbsolute = (url, init) => {
 
   return fetch(fullUrl, initWithDefaults).then((res) => {
     if (!res.ok) {
-      throw new Error(res.statusText);
+      if (res.status === 401) {
+        sessionStorage.removeItem(USER_TOKEN);
+        window.location.reload();
+      }
+      throw new Error(res.status);
     }
     return res.json();
   });
