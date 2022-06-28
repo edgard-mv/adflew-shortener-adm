@@ -12,13 +12,15 @@ const Home = () => {
   const [candidateUrl, setCandidateUrl] = useState('');
   const [fullUrl, setFullUrl] = useState('');
 
+  const queryClient = useQueryClient();
+
   function onUrlChange(e) {
     setCandidateUrl(e.currentTarget.value);
   }
 
   const shortenUrl = useMutation(shortenUrlMutation, {
     onSuccess: (data) => {
-      console.log({ data });
+      queryClient.invalidateQueries(BOARD_ENTRIES);
       setFullUrl(BASE_URL.concat(`/${data?.link?.shortCode}`));
     },
   });
@@ -35,8 +37,6 @@ const Home = () => {
   function copyToClipBoard() {
     navigator.clipboard.writeText(fullUrl);
   }
-
-  const queryClient = useQueryClient();
 
   function onClickLink(e) {
     queryClient.invalidateQueries(BOARD_ENTRIES);
