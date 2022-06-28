@@ -103,6 +103,11 @@ const Home = () => {
               href={fullUrl}
               onClick={onClickLink}
               variant="body2"
+              sx={{
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis',
+              }}
               target="_blank"
               rel="noopener"
             >
