@@ -4,14 +4,21 @@ import Paper from '@mui/material/Paper';
 const AppForm = ({ children }) => {
   return (
     <Box
-      id="hello, there"
       sx={{
         display: 'flex',
         width: 1,
         mx: { xs: 2, md: 4 },
       }}
     >
-      <Box sx={{ height: 1, display: 'flex', alignItems: 'center', flex: 1 }}>
+      <Box
+        sx={{
+          height: 1,
+          display: 'flex',
+          alignItems: 'center',
+          flex: 1,
+          maxWidth: 1,
+        }}
+      >
         <Paper
           elevation={2}
           sx={{
