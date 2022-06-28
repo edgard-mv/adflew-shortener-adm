@@ -46,12 +46,13 @@ const Home = () => {
     <Box
       sx={{
         display: 'flex',
-        flexWrap: 'wrap',
-        rowGap: '10px',
+        flexDirection: 'column',
+        rowGap: '30px',
         p: 2,
-        width: 1,
+        width: 'fit-content',
+        maxWidth: 1,
         height: '100%',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
       }}
     >
@@ -62,9 +63,8 @@ const Home = () => {
         <Box
           component="form"
           sx={{
-            my: 3,
+            mt: 3,
             display: 'flex',
-            minWidth: '400px',
           }}
           onSubmit={onSubmit}
           autoComplete="off"
@@ -92,6 +92,7 @@ const Home = () => {
               columnGap: '10px',
               width: 1,
               justifyContent: 'space-between',
+              mt: 2,
               pl: 1,
               outline: 'solid 1px',
               outlineColor: theme.palette.primary.dark,

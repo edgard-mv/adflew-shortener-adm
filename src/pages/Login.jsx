@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useAuthContext } from '../context/Auth.provider.js';
+import { styled } from '@mui/material/styles';
 
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -29,41 +30,51 @@ const Login = () => {
 
   return (
     <MainContainer>
-      <AppForm>
-        <Typography variant="h5" alignContent="center">
-          Log in
-        </Typography>
-        <Box
-          component="form"
-          sx={{
-            mt: 3,
-            display: 'flex',
-            flexDirection: 'column',
-            rowGap: '20px',
-          }}
-          onSubmit={onSubmit}
-          autoComplete="off"
-        >
-          <TextField
-            value={username}
-            onChange={onUsernameChange}
-            required
-            label="Username"
-          />
-          <TextField
-            value={password}
-            onChange={onPasswordChange}
-            required
-            label="Password"
-            type="password"
-          />
-          <Button type="submit" sx={{ mt: 3, width: 1 }} variant="contained">
+      <FormContainer>
+        <AppForm>
+          <Typography variant="h5" alignContent="center">
             Log in
-          </Button>
-        </Box>
-      </AppForm>
+          </Typography>
+          <Box
+            component="form"
+            sx={{
+              mt: 3,
+              display: 'flex',
+              flexDirection: 'column',
+              rowGap: '20px',
+            }}
+            onSubmit={onSubmit}
+            autoComplete="off"
+          >
+            <TextField
+              value={username}
+              onChange={onUsernameChange}
+              required
+              label="Username"
+            />
+            <TextField
+              value={password}
+              onChange={onPasswordChange}
+              required
+              label="Password"
+              type="password"
+            />
+            <Button type="submit" sx={{ mt: 3, width: 1 }} variant="contained">
+              Log in
+            </Button>
+          </Box>
+        </AppForm>
+      </FormContainer>
     </MainContainer>
   );
 };
+
+const FormContainer = styled('div')(() => ({
+  display: 'flex',
+  flex: '1 1 auto',
+  alignContent: 'center',
+  justifyContent: 'center',
+  maxWidth: 500,
+}));
 
 export default Login;
