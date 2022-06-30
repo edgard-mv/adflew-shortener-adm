@@ -80,13 +80,6 @@ const Board = () => {
                   href={brdEntry?.url}
                   onClick={onClickLink}
                   variant="body2"
-                  sx={{
-                    display: 'block',
-                    width: 350,
-                    whiteSpace: 'nowrap',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                  }}
                   target="_blank"
                   rel="noopener"
                 >
