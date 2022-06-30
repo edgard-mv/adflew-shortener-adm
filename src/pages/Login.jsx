@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuthContext } from '../context/Auth.provider.js';
 import { styled } from '@mui/material/styles';
 
@@ -8,9 +8,21 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import MainContainer from '../components/MainContainer.jsx';
 import AppForm from '../components/AppForm.jsx';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const { logIn } = useAuthContext();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { isLoggedIn } = useAuthContext();
+
+  useEffect(() => {
+    const from = location.state?.from?.pathname ?? '/';
+    if (isLoggedIn) {
+      navigate(from, { replace: true });
+    }
+  }, [isLoggedIn, location, navigate]);
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
