@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
+import { toast } from 'react-toastify';
 import logUserInMutation from '../api/mutations/logUserIn.mutation';
 import getUserInfoQuery from '../api/queries/getUserInfo.query';
 import { USER_TOKEN } from '../utils/constants';
@@ -18,8 +19,15 @@ const AuthContextProvider = ({ children }) => {
       if (!!data?.token?.length) {
         sessionStorage.setItem(USER_TOKEN, data.token);
         setIsLoggedIn(true);
+        toast.success('Successfully logged in');
       }
     },
+    onError: (err) =>
+      toast.error(
+        err.message === '400'
+          ? 'Wrong credentials'
+          : 'An error occurred when trying to log in'
+      ),
   });
 
   const { data: userInfo, isStale: isUserInfoStale } = useQuery(

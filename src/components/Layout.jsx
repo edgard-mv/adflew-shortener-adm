@@ -8,6 +8,9 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 
 import LogoutRounded from '@mui/icons-material/LogoutRounded';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 const Layout = () => {
   const { isLoggedIn, logOut, userInfo } = useAuthContext();
@@ -38,6 +41,7 @@ const Layout = () => {
       </AppBar>
       <MainContainer>
         <Outlet />
+        <ToastContainer position="bottom-right" />
       </MainContainer>
     </>
   );
