@@ -55,6 +55,7 @@ const AuthContextProvider = ({ children }) => {
   const value = {
     logIn,
     logOut,
+    isLoading: logUserIn.isLoading,
     isLoggedIn,
     userInfo: isUserInfoStale ? {} : userInfo,
   };

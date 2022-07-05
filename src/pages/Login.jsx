@@ -5,17 +5,16 @@ import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import LoadingButton from '@mui/lab/LoadingButton';
 import MainContainer from '../components/MainContainer.jsx';
 import AppForm from '../components/AppForm.jsx';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const { logIn } = useAuthContext();
+  const { logIn, isLoggedIn, isLoading } = useAuthContext();
 
   const navigate = useNavigate();
   const location = useLocation();
-  const { isLoggedIn } = useAuthContext();
 
   useEffect(() => {
     const from = location.state?.from?.pathname ?? '/';
@@ -71,9 +70,14 @@ const Login = () => {
               label="Password"
               type="password"
             />
-            <Button type="submit" sx={{ mt: 3, width: 1 }} variant="contained">
+            <LoadingButton
+              type="submit"
+              loading={isLoading}
+              sx={{ mt: 3, width: 1 }}
+              variant="contained"
+            >
               Log in
-            </Button>
+            </LoadingButton>
           </Box>
         </AppForm>
       </FormContainer>
